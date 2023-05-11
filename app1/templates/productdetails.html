@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col py-3">
+    
+    <section style="background-color: #eee;">
+        <div class="container py-5">
+            <div class="row">
+                
+                    <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                        <div class="card">
+                            <img src="{{product.img.url}}"
+                                class="card-img-top" height="300px" alt="Laptop" />
+                            <div class="card-body" style="align-self: center;">
+                                <h5 class="mb-0" style="align-self:center;">{{product.name}}</h5>
+                                <h5 class="mb-0" style="align-self:center;">RS.{{product.price}}</h5>
+                                <h5 class="mb-0" style="align-self:center;">{{product.discription}}</h5>
+                            </div>
+                            {% if product.quantity > 0 %}
+                            <form  method="post">
+                                {% csrf_token %}
+                                <input type="number" name="quantity">
+                                <button type="submit">add to cart</button>
+                            </form>
+                            {% else %}
+                            <h1>Out Of Stock</h1>
+                            {% endif %}
+                        </div>
+                    </div>  
+                   
+            </div>
+        </div>
+    </section>
+    
+</div>
+                {% if m %}
+                  <script>alert("{{m}}")</script>
+                {% endif %}
+
+{% endblock  %}
+
+
+
+
+
+
+
+
+
